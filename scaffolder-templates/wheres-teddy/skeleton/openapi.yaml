@@ -1,0 +1,26 @@
+---
+openapi: 3.0.3
+info:
+  title: Red Hat Teddy API Model
+  version: 1.0
+servers:
+- url: https://redhat-dog-image-generation.apps.wearedevs.rl97.p1.openshiftapps.com
+  description: Auto generated value
+paths:
+  /v1/models/model:predict:
+    post:
+      description: API Inference
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object 
+              required:
+                - data
+              properties:
+                prompt:
+                  type: string
+      responses:
+        '200':
+          description: Successfully ran inference

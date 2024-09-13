@@ -1,0 +1,6 @@
+Flask[async]
+gunicorn
+requests
+pillow
+boto3
+botocore
