@@ -97,8 +97,8 @@ spec:
       name: Publishing to Source Code Repository
       action: publish:gitlab
       input:
-        repoUrl: "${{ parameters.host }}?owner=${{ parameters.owner }}&repo=${{parameters.component_id}}"
-        repoVisibility: public 
+        repoUrl: "${{ parameters.host }}?owner=${{ parameters.owner }}&repo=${{parameters.namespace}}-wheres-teddy"
+        repoVisibility: public
     - id: registerSource
       name: Registering the Source Code Component
       action: catalog:register
@@ -114,8 +114,8 @@ spec:
         values:
           component_id: ${{parameters.namespace}}-wheres-teddy-app
           description: ${{parameters.description}}
-          destination: https://${{ parameters.host }}/${{ parameters.owner }}/${{parameters.component_id}}-wheres-teddy-gitops.git
-          source_repository: https://${{ parameters.host }}/${{ parameters.owner }}/${{parameters.component_id}}-wheres-teddy.git
+          destination: https://${{ parameters.host }}/${{ parameters.owner }}/${{parameters.namespace}}-wheres-teddy-gitops.git
+          source_repository: https://${{ parameters.host }}/${{ parameters.owner }}/${{parameters.namespace}}-wheres-teddy.git
           repository_name: ${{parameters.namespace}}-wheres-teddy
           # git_owner: ${{parameters.githubOrg}}
           cluster: ${{parameters.cluster_id}}
@@ -130,7 +130,7 @@ spec:
       name: Publishing to Deployment Resource Repository
       action: publish:gitlab
       input:
-        repoUrl: "${{ parameters.host }}?owner=${{ parameters.owner }}&repo=${{parameters.component_id}}-wheres-teddy-gitops"
+        repoUrl: "${{ parameters.host }}?owner=${{ parameters.owner }}&repo=${{parameters.namespace}}-wheres-teddy-gitops"
         title: gitops resources for ${{parameters.namespace}}-wheres-teddy-app
         description: gitops resources for ${{parameters.namespace}}-wheres-teddy-app
         sourcePath: ./tenant-gitops
@@ -144,7 +144,7 @@ spec:
         appName: ${{parameters.namespace}}-wheres-teddy-app-bootstrap
         argoInstance: main
         namespace: janus-argocd
-        repoUrl: https://${{ parameters.repo.host }}/${{ parameters.repo.owner }}/${{ parameters.component_id }}-wheres-teddy-gitops.git
+        repoUrl: https://${{ parameters.repo.host }}/${{ parameters.repo.owner }}/${{ parameters.namespace }}-wheres-teddy-gitops.git
         path: 'argocd/'
   output:
     links:
