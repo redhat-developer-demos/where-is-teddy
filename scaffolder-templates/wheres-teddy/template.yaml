@@ -127,6 +127,7 @@ spec:
       name: Publishing to Source Code Repository
       action: publish:gitlab
       input:
+        sourcePath: ./source
         repoUrl: "${{ parameters.host }}?owner=${{ parameters.owner }}&repo=${{parameters.namespace}}-wheres-teddy"
         repoVisibility: public
     - id: registerSource
@@ -161,12 +162,12 @@ spec:
       name: Publishing to Deployment Resource Repository
       action: publish:gitlab
       input:
-        repoUrl: "${{ parameters.host }}?owner=${{ parameters.owner }}&repo=${{parameters.namespace}}-wheres-teddy-gitops"
-        title: gitops resources for ${{parameters.namespace}}-wheres-teddy-app
-        description: gitops resources for ${{parameters.namespace}}-wheres-teddy-app
         sourcePath: ./tenant-gitops
+        repoUrl: "${{ parameters.host }}?owner=${{ parameters.owner }}&repo=${{parameters.namespace}}-wheres-teddy-gitops"
+        # title: gitops resources for ${{parameters.namespace}}-wheres-teddy-app
+        # description: gitops resources for ${{parameters.namespace}}-wheres-teddy-app
         defaultBranch: main
-        protectDefaultBranch: false
+        # protectDefaultBranch: false
         repoVisibility: public
     - id: createArgoResources
       name: Create ArgoCD Resources
