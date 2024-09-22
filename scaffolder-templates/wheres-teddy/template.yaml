@@ -129,6 +129,7 @@ spec:
       input:
         sourcePath: ./source
         repoUrl: "${{ parameters.host }}?owner=${{ parameters.owner }}&repo=${{parameters.namespace}}-wheres-teddy"
+        defaultBranch: main
         repoVisibility: public
     - id: registerSource
       name: Registering the Source Code Component
