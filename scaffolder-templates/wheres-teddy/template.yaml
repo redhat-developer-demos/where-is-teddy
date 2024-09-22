@@ -176,7 +176,7 @@ spec:
         appName: ${{parameters.namespace}}-wheres-teddy-app-bootstrap
         argoInstance: main
         namespace: janus-argocd
-        repoUrl: https://${{ parameters.repo.host }}/${{ parameters.repo.owner }}/${{ parameters.namespace }}-wheres-teddy-gitops.git
+        repoUrl: https://${{ parameters.host }}/${{ parameters.owner }}/${{ parameters.namespace }}-wheres-teddy-gitops.git
         path: 'argocd/'
   output:
     links:
