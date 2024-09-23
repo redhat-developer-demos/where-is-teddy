@@ -30,10 +30,9 @@ spec:
           title: Owner
           type: string
           description: Owner of the component
-          ui:field: EntityPicker
-          ui:options:
-            catalogFilter:
-              kind: [User]          
+          default: development
+          enum:
+            - development
     - title: Provide information about the new component
       required:
         - cluster_id
@@ -63,19 +62,50 @@ spec:
           default: /v1/models/model:predict
     - title: Provide Build Information
       required:
-        - image_host
-        - image_tag
+        - image_registry
       properties:
-        image_host:
-          title: Image Host
+        image_registry:
+          title: Image Registry
           type: string
-          description: Host for storing image (defaults to openshift internal)
-          default: image-registry.openshift-image-registry.svc:5000
-        image_tag:
-          title: Image Tag
-          default: latest
-          type: string
-          description: Image tag to use for storing in the internal registry
+          enum:
+            - Openshift
+            - Quay
+      dependencies:
+        image_registry:
+          oneOf:
+            - properties:
+                image_registry:
+                  enum:
+                    - Openshift
+                image_host:
+                  title: Image Host
+                  type: string
+                  description: Host for storing image
+                  default: image-registry.openshift-image-registry.svc:5000
+                image_tag:
+                  title: Image Tag
+                  default: latest
+                  type: string
+                  description: Build Image tag
+            - properties:
+                image_registry:
+                  enum:
+                    - Quay
+                image_host:
+                  title: Image Host
+                  type: string
+                  description: Host for storing image
+                  default: quay-gd9rg.apps.wearedevs.rl97.p1.openshiftapps.com
+                image_organization:
+                  title: Organization
+                  type: string
+                  description: Name of the Quay Organization
+                  default: quayadmin
+                image_tag:
+                  title: Image Tag
+                  default: latest
+                  type: string
+                  description: Build Image tag
   steps:
     - id: templateSource
       name: Generating the source code component
@@ -87,7 +117,7 @@ spec:
         targetPath: ./source
         values:
           repoName: ${{parameters.namespace}}-wheres-teddy
-          owner: ${{parameters.owner}}
+          owner: ${{ user.entity.metadata.name }}
           cluster_id: ${{parameters.cluster_id}}
           namespace: ${{parameters.namespace}}
           component_id: ${{parameters.namespace}}-wheres-teddy-app
@@ -97,7 +127,9 @@ spec:
       name: Publishing to Source Code Repository
       action: publish:gitlab
       input:
+        sourcePath: ./source
         repoUrl: "${{ parameters.host }}?owner=${{ parameters.owner }}&repo=${{parameters.namespace}}-wheres-teddy"
+        defaultBranch: main
         repoVisibility: public
     - id: registerSource
       name: Registering the Source Code Component
@@ -120,6 +152,7 @@ spec:
           # git_owner: ${{parameters.githubOrg}}
           cluster: ${{parameters.cluster_id}}
           namespace: ${{parameters.namespace}}
+          image_registry: ${{ parameters.image_registry }}
           image_host: ${{parameters.image_host}}
           image_name: ${{parameters.namespace}}/wheres-teddy-app
           image_tag: ${{parameters.image_tag}}
@@ -130,12 +163,12 @@ spec:
       name: Publishing to Deployment Resource Repository
       action: publish:gitlab
       input:
-        repoUrl: "${{ parameters.host }}?owner=${{ parameters.owner }}&repo=${{parameters.namespace}}-wheres-teddy-gitops"
-        title: gitops resources for ${{parameters.namespace}}-wheres-teddy-app
-        description: gitops resources for ${{parameters.namespace}}-wheres-teddy-app
         sourcePath: ./tenant-gitops
+        repoUrl: "${{ parameters.host }}?owner=${{ parameters.owner }}&repo=${{parameters.namespace}}-wheres-teddy-gitops"
+        # title: gitops resources for ${{parameters.namespace}}-wheres-teddy-app
+        # description: gitops resources for ${{parameters.namespace}}-wheres-teddy-app
         defaultBranch: main
-        protectDefaultBranch: false
+        # protectDefaultBranch: false
         repoVisibility: public
     - id: createArgoResources
       name: Create ArgoCD Resources
@@ -144,7 +177,7 @@ spec:
         appName: ${{parameters.namespace}}-wheres-teddy-app-bootstrap
         argoInstance: main
         namespace: janus-argocd
-        repoUrl: https://${{ parameters.repo.host }}/${{ parameters.repo.owner }}/${{ parameters.namespace }}-wheres-teddy-gitops.git
+        repoUrl: https://${{ parameters.host }}/${{ parameters.owner }}/${{ parameters.namespace }}-wheres-teddy-gitops.git
         path: 'argocd/'
   output:
     links:
