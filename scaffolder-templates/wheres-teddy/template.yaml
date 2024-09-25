@@ -118,6 +118,7 @@ spec:
         values:
           repoName: ${{parameters.namespace}}-wheres-teddy
           owner: ${{ user.entity.metadata.name }}
+          repoOwner: ${{ parameters.owner }}
           cluster_id: ${{parameters.cluster_id}}
           namespace: ${{parameters.namespace}}
           component_id: ${{parameters.namespace}}-wheres-teddy-app

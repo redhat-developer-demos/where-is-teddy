@@ -1,0 +1,19 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: photo-generator-genai
+  description: API invoked to create images of Red Hat Teddy
+  links:
+    - url: https://editor.swagger.io/
+      title: Swagger UI
+      icon: web
+    - url: https://github.com/hguerrero/where-is-teddy/blob/main/scaffolder-templates/wheres-teddy/skeleton/openapi.yaml
+      title: API Spec
+      icon: code
+spec:
+  type: openapi
+  lifecycle: production
+  owner: rhdh
+  definition:
+    $text: https://github.com/hguerrero/where-is-teddy/blob/main/scaffolder-templates/wheres-teddy/skeleton/openapi.yaml

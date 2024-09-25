@@ -6,7 +6,9 @@
 
 2. Tick the checkbox to enable RHOAI
 
-3. Add the puller DaemonSet
+3. From the command line, login as a cluster administrator
+
+4. Add the puller DaemonSet
 
    ```bash
    oc apply -f ./setup/rhoai-config/images-puller.yaml
@@ -34,9 +36,21 @@
 
 9. Wait for job to finish
 
-10. Create a notebook using the PyTorch RHODS image and using the `My Storage` data connection
+10. Change the default storage remove cepth
 
-11. Clone the repo `https://github.com/cfchase/text-to-image-demo.git` 
+    ```sh
+    oc patch storageclass ocs-storagecluster-ceph-rbd -p '{"metadata": {"annotations": {"storageclass.kubernetes.io/is-default-class": "false"}}}'
+    ```
+
+11. Make gp3 the default one
+
+    ```sh
+    oc patch storageclass gp3-csi -p '{"metadata": {"annotations": {"storageclass.kubernetes.io/is-default-class": "true"}}}'
+    ```
+
+12. Create a notebook using the PyTorch RHODS image and using the `My Storage` data connection
+
+13. Clone the repo `https://github.com/cfchase/text-to-image-demo.git` 
 
 11. Register the template as a new component from the following url: `https://github.com/hguerrero/where-is-teddy/blob/main/scaffolder-templates/wheres-teddy/template.yaml`
 12. Go over the notebooks to follow the flow of the demo to enable the inference server
