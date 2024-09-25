@@ -10,7 +10,7 @@ metadata:
     - datascience
     - nodejs
 spec:
-  owner: rhdeveloper-workshop-authors
+  owner: rhdh
   type: service
 
   parameters:
