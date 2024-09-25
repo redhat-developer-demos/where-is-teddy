@@ -117,13 +117,16 @@ spec:
         targetPath: ./source
         values:
           repoName: ${{parameters.namespace}}-wheres-teddy
+          description: ${{ parameters.description }}
           owner: ${{ user.entity.metadata.name }}
           repoOwner: ${{ parameters.owner }}
           cluster_id: ${{parameters.cluster_id}}
           namespace: ${{parameters.namespace}}
+          host: ${{ parameters.host }}
           component_id: ${{parameters.namespace}}-wheres-teddy-app
           model_endpoint: ${{parameters.model_endpoint}}
           model_url: ${{parameters.model_endpoint}}/${{parameters.model_path}}
+          destination: ${{ parameters.owner }}/${{parameters.namespace}}-wheres-teddy
     - id: publishSource
       name: Publishing to Source Code Repository
       action: publish:gitlab
