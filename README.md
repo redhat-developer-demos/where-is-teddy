@@ -54,5 +54,6 @@
 
 11. Register the template as a new component from the following url: `https://github.com/hguerrero/where-is-teddy/blob/main/scaffolder-templates/wheres-teddy/template.yaml`
 12. Go over the notebooks to follow the flow of the demo to enable the inference server
+13. Register the API entity from the following url: `https://github.com/hguerrero/where-is-teddy/blob/main/genai-photo-generator-api/catalog-info.yaml`
 
 12. Create a new component using the software template from Developer Hub.
