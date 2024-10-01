@@ -159,7 +159,7 @@ spec:
           image_organization: ${{ parameters.image_organization }}          
           image_registry: ${{ parameters.image_registry }}
           image_host: ${{parameters.image_host}}
-          image_name: ${{parameters.namespace}}/wheres-teddy-app
+          image_name: wheres-teddy-app
           image_tag: ${{parameters.image_tag}}
           model_endpoint: ${{parameters.model_endpoint}}
           model_url: ${{parameters.model_endpoint}}/${{parameters.model_path}}

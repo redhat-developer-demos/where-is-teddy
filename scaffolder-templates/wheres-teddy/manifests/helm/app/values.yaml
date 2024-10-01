@@ -15,8 +15,11 @@ namespace:
 replicaCount: 1
 
 image:
-  repository: ${{values.image_host}}/${{values.image_name}}
   pullPolicy: Always
+  registry: ${{values.image_registry}}
+  host: ${{values.image_host}}
+  organization: ${{values.image_organization}}
+  name: ${{values.image_name}}
   # Overrides the image tag whose default is the chart appVersion.
   tag: ${{values.image_tag}}
 

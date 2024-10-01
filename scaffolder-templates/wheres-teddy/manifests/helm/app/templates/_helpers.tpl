@@ -74,3 +74,11 @@ Create the name of the service account to use
   value: "{{ $val }}"
 {{- end}}
 {{- end }}
+
+{{- define "quarkus-template.image" -}}
+{{- if eq .Values.image.registry "Quay" }}
+{{- printf "%s/%s/%s-%s:%s" .Values.image.host .Values.image.organization .Values.namespace.name .Values.image.name .Values.image.tag -}}
+{{- else }}
+{{- printf "%s/%s/%s:latest" .Values.image.host .Values.namespace.name .Values.image.name -}}
+{{- end }}
+{{- end }}
