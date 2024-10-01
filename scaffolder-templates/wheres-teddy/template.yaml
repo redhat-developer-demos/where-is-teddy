@@ -156,6 +156,7 @@ spec:
           # git_owner: ${{parameters.githubOrg}}
           cluster: ${{parameters.cluster_id}}
           namespace: ${{parameters.namespace}}
+          image_organization: ${{ parameters.image_organization }}          
           image_registry: ${{ parameters.image_registry }}
           image_host: ${{parameters.image_host}}
           image_name: ${{parameters.namespace}}/wheres-teddy-app
