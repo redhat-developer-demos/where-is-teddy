@@ -52,8 +52,10 @@
 
 13. Clone the repo `https://github.com/cfchase/text-to-image-demo.git` 
 
-11. Register the template as a new component from the following url: `https://github.com/hguerrero/where-is-teddy/blob/main/scaffolder-templates/wheres-teddy/template.yaml`
-12. Go over the notebooks to follow the flow of the demo to enable the inference server
-13. Register the API entity from the following url: `https://github.com/hguerrero/where-is-teddy/blob/main/genai-photo-generator-api/catalog-info.yaml`
+14. Register the template as a new component from the following url: `https://github.com/hguerrero/where-is-teddy/blob/main/scaffolder-templates/wheres-teddy/template.yaml`
+15. Register the serving runtime (https://github.com/cfchase/text-to-image-demo/blob/main/diffusers-runtime/templates/serving-runtime.yaml) through the OpenShift AI console 
+16. Go over the notebooks to follow the flow of the demo
+17. Deploy the model using the values from the notebook and the registered serving runtime (use custom resources 1Gb 1 CPU)
+18. Register the API entity from the following url: `https://github.com/hguerrero/where-is-teddy/blob/main/genai-photo-generator-api/catalog-info.yaml`
 
-12. Create a new component using the software template from Developer Hub.
+19. Create a new component using the software template from Developer Hub.
