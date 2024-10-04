@@ -6,5 +6,6 @@ metadata:
     - ai
     - photo
     - generator
+    - api
 spec:
   owner: rhdh
