@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: photo-generator-genai
+  tags:
+    - ai
+    - photo
+    - generator
+    - API
+spec:
+  owner: rhdh
