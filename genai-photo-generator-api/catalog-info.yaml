@@ -15,5 +15,6 @@ spec:
   type: openapi
   lifecycle: production
   owner: rhdh
+  system: photo-generator-genai
   definition:
     $text: https://github.com/hguerrero/where-is-teddy/blob/main/scaffolder-templates/wheres-teddy/skeleton/openapi.yaml
