@@ -53,11 +53,18 @@
     1. Then Go to Data Science Projects. Select the "image generation" project, then go to "Create workbench".
     1. From there, select the PyTorch image, GPU accelerator, and use the `My Storage` data connection.
 
-1. Launch the newly created image-generation workbench, and clone the repo `https://github.com/cfchase/text-to-image-demo.git`. (go to the git menu in the menu bar)
+1. Launch the newly created image-generation workbench, and clone the repo `https://github.com/cfchase/text-to-image-demo.git`.
+    (go to the git menu in the menu bar)
 
-1. Go to Red Hat Developer Hub. In the Catalog view, click "Create", "Register Existing Component" and add template from the following url: `https://github.com/redhat-developer-demos/where-is-teddy/blob/main/scaffolder-templates/wheres-teddy/template.yaml`
+1. Go to Red Hat Developer Hub. In the Catalog view,
+    click "Create", "Register Existing Component" and add template from the following url:
+    `https://github.com/redhat-developer-demos/where-is-teddy/blob/main/scaffolder-templates/wheres-teddy/template.yaml`
 
-1. Register the serving runtime (https://github.com/cfchase/text-to-image-demo/blob/main/diffusers-runtime/templates/serving-runtime.yaml) through the OpenShift console by applying the yaml in the image-generation project.
+1. Register the serving runtime in Openshift AI > Settings > Serving Runtimes:
+    1. Select "Single Model Serving Platform"
+    1. API Protocol: REST
+    1. In the "Add Serving Runtime" select "from scratch" and past the contents of
+        https://github.com/cfchase/text-to-image-demo/blob/main/diffusers-runtime/templates/serving-runtime.yaml
 
 1. Go back to the image-generation workbench and open run through the 3 notebooks of the demo:
     1. 1_experimentation.ipynb
@@ -66,6 +73,7 @@
 
 1. Deploy the model using the values from the notebook and the registered serving runtime (use custom resources 1Gb 1 CPU)
 
-1. Register the API entity from the following url: `https://github.com/redhat-developer-demos/where-is-teddy/blob/main/genai-photo-generator-api/catalog-info.yaml`
+1. Register the API entity from the following url:
+    `https://github.com/redhat-developer-demos/where-is-teddy/blob/main/genai-photo-generator-api/catalog-info.yaml`
 
-1. Create a new component using the software template from Developer Hub.
+1. Create a new component using the software template from Developer Hub
