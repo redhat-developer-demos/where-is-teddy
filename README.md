@@ -51,7 +51,7 @@
 1. Create a new Workbench:
     1. Go to Openshift AI (from the OpenShift console view, click on the applications menu in the top right, then select Red Hat OpenShift AI). 
     1. Then Go to Data Science Projects. Select the "image generation" project, then go to "Create workbench".
-    1. From there, select the PyTorch image, GPU accelerator, and use the `My Storage` data connection.
+    1. From there, select the PyTorch image, GPU accelerator, and use the `My Storage` data connection. Select "Medium" for container size.
 
 1. Launch the newly created image-generation workbench, and clone the repo `https://github.com/cfchase/text-to-image-demo.git`.
     (go to the git menu in the menu bar)
