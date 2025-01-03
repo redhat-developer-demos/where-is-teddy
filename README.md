@@ -120,7 +120,7 @@ This guide will help you to set up the Where is Teddy? Demo
 
 1. Register the serving runtime in Openshift AI by clicking on **Settings** then **Serving Runtimes** menu and finally the **Add serving runtime** button.
 
-    ![image-2025-01-03170223](docs/images/image-2025-01-03 170223.png)
+    ![image-2025-01-03170223](docs/images/image-2025-01-03170223.png)
 
 1. Select `Single Model Serving Platform`.
 
@@ -130,11 +130,11 @@ This guide will help you to set up the Where is Teddy? Demo
 
 1. Click the **Create** button. 
 
-    ![image-2025-01-03170856.png](docs/images/image-2025-01-03 170856.png)
+    ![image-2025-01-03170856.png](docs/images/image-2025-01-03170856.png)
 
 1. Select your working project. Click on the **Models** tab. Then click the **Deploy Model** button.
 
-    ![image-2025-01-03163313.png](docs/images/image-2025-01-03 163313.png)
+    ![image-2025-01-03163313.png](docs/images/image-2025-01-03163313.png)
 
 1. From there, fill in the form with the following information: 
 
@@ -161,6 +161,8 @@ This guide will help you to set up the Where is Teddy? Demo
 1. Click the **Deploy** button.
 
 1. Wait a few minutes for the *inference server* to deploy. The status should turn green and the inference point should show in.
+
+    ![image-2025-01-03173849.png](docs/images/image-2025-01-03173849.png)
 
 ### Deploy the consuming application 
 
