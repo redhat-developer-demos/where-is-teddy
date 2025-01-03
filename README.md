@@ -117,7 +117,51 @@ This guide will help you to set up the Where is Teddy? Demo
 
 1. Go back to the OpenShift AI console.
 
-1. using the values from the notebook output and the registered serving runtime (use custom resources 1Gb 1 CPU)
+1. Register the serving runtime in Openshift AI by clicking on **Settings** then **Serving Runtimes** menu and finally the **Add serving runtime** button.
+
+    ![image-2025-01-03 170223](docs/images/image-2025-01-03 170223.png)
+
+1. Select `Single Model Serving Platform`.
+
+1. Select the API Protocol `REST`.
+
+1. In the **Add Serving Runtime** click **from scratch** and past the contents `/templates/serving-runtime.yaml` file. 
+
+1. Click the **Create** button. 
+
+    ![image-2025-01-03 170856.png](docs/images/image-2025-01-03 170856.png)
+
+1. Select your working project. Click on the **Models** tab. Then click the **Deploy Model** button.
+
+    ![image-2025-01-03 163313.png](docs/images/image-2025-01-03 163313.png)
+
+1. From there, fill in the form with the following information: 
+
+    **Model name** `redhat-dog`
+
+    **Serving runtime** Diffusers Runtime
+
+    **Model framework** pytorch - 1
+
+    **Model server size** Custom (1CPU / 1 Gi)
+
+    **Accelerator** NVIDIA GPU
+
+    **Model route** Check *Make deployment models available through an external route* 
+
+    **Token authentication** Leave it unchecked
+
+    **Model location** Existing data connection
+
+    ​	**Name** My Storage
+
+    ​	**Path** ``models/notebook-output/redhat-dog/`
+
+1. Click the **Deploy** button.
+
+1. Wait a few minutes for the *inference server* to deploy. The status should turn green and the inference point should show in.
+
+### Deploy the consuming application 
 
 1. Go to Red Hat Developer Hub. In the Catalog view,
       click "Create", "Register Existing Component" and add template from the following url:
