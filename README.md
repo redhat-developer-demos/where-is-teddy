@@ -104,6 +104,7 @@ This guide will help you to set up the Where is Teddy? Demo
     ![image-20241212142359786](docs/images/image-20241212142359786.png)
 
 1. In the new Jupyter notebook click on the *Git* tab and then the **Clone a Repository** button. Type in the following URI `https://github.com/cfchase/text-to-image-demo.git`. Finally click **Clone**.
+
     ![image-20241212142753206](docs/images/image-20241212142753206.png)
 
 ### Run the notebook training
@@ -119,7 +120,7 @@ This guide will help you to set up the Where is Teddy? Demo
 
 1. Register the serving runtime in Openshift AI by clicking on **Settings** then **Serving Runtimes** menu and finally the **Add serving runtime** button.
 
-    ![image-2025-01-03 170223](docs/images/image-2025-01-03 170223.png)
+    ![image-2025-01-03170223](docs/images/image-2025-01-03 170223.png)
 
 1. Select `Single Model Serving Platform`.
 
@@ -129,11 +130,11 @@ This guide will help you to set up the Where is Teddy? Demo
 
 1. Click the **Create** button. 
 
-    ![image-2025-01-03 170856.png](docs/images/image-2025-01-03 170856.png)
+    ![image-2025-01-03170856.png](docs/images/image-2025-01-03 170856.png)
 
 1. Select your working project. Click on the **Models** tab. Then click the **Deploy Model** button.
 
-    ![image-2025-01-03 163313.png](docs/images/image-2025-01-03 163313.png)
+    ![image-2025-01-03163313.png](docs/images/image-2025-01-03 163313.png)
 
 1. From there, fill in the form with the following information: 
 
