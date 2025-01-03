@@ -97,6 +97,7 @@ This guide will help you to set up the Where is Teddy? Demo
 1. Click on *Create workbench*.
 
 1. Wait a few minutes until the status in the page is **Running**.
+    > It is a big image to pull, it might take up to **10 minutes** to get started.
 
 1. Open the newly created workbench by clicking *Open*.
 
