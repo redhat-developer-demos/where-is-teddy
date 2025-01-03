@@ -76,7 +76,7 @@ This guide will help you to set up the Where is Teddy? Demo
 
 1. In the overview tab, click on *Create workbench*.
 
-    ![image-20241212141309243](docs/images/image-20241212141309243.png)
+    ![image-20250103151846193](docs/images/image-20250103151846193.png)
 
 1. From there, fill in the form with the following information: 
 
