@@ -1,7 +1,3 @@
----
-typora-copy-images-to: ./docs/images
----
-
 # Where is Teddy?
 
 ## Setup
@@ -14,7 +10,7 @@ This guide will help you to set up the Where is Teddy? Demo
 
 1. Tick the checkbox to enable RHOAI.
 
-### Prepare the Notebook environment
+### Prepare the OpenShift AI Notebook environment
 
 1. From the command line, login to OpenShift as a cluster administrator.
 
@@ -25,6 +21,8 @@ This guide will help you to set up the Where is Teddy? Demo
    ```sh
    oc apply -f ./setup/rhoai-config/subscription-authorino.yaml
    ```
+
+1. Wait a few moments until the operator is fully installed.
 
 1. Restart the data science operator pod.
 
@@ -62,11 +60,11 @@ This guide will help you to set up the Where is Teddy? Demo
    oc apply -n image-generation -f ./setup/image-gen/pvc.yaml
    ```
 
-   > Currently there is an issue with the storage provider in the GPU worker nodes that prevent the worbench to start, creating the persistent volume claim with [gp3-csi](https://console-openshift-console.apps.cluster-mtnzs.mtnzs.sandbox553.opentlc.com/k8s/cluster/storageclasses/gp3-csi) solves the issue.
+   > Currently there is an issue with the storage provider in the GPU worker nodes that prevent the workbench to start, creating the persistent volume claim with [gp3-csi](https://console-openshift-console.apps.cluster-mtnzs.mtnzs.sandbox553.opentlc.com/k8s/cluster/storageclasses/gp3-csi) solves the issue.
 
-### Create a new Workbench:
+### Create a new OpenShift AI Workbench:
 
-1. Go to Openshift AI (from the OpenShift console view, click on the applications menu in the top right, then select Red Hat OpenShift AI). 
+1. Go to OpenShift AI (from the OpenShift console view, click on the applications menu in the top right, then select Red Hat OpenShift AI). 
 
     ![image-20241212140818096](./docs/images/image-20241212140818096.png)
 
