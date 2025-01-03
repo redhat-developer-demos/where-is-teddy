@@ -1,10 +1,10 @@
 ﻿kind: Project
 apiVersion: project.openshift.io/v1
 metadata:
-  name: image-generation
+  annotations:
+    openshift.io/description: 'data-science-project for Image Generation'
+    openshift.io/display-name: Image Generation
   labels:
     kubernetes.io/metadata.name: image-generation
     opendatahub.io/dashboard: 'true'
-  annotations:
-    openshift.io/description: ''
-    openshift.io/display-name: Image Generation
+  name: image-generation

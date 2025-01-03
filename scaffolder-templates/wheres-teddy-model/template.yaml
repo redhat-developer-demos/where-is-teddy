@@ -1,0 +1,101 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: wheres-teddy-model-template
+  title: Where's Teddy infrastructure to show Gen AI with OpenShift AI
+  description: Infrastructure to show Gen AI with OpenShift AI
+  tags:
+    - genai
+    - datascience
+    - openshift
+spec:
+  owner: rhdh
+  type: service
+
+  parameters:
+    - title: Provide information about the GitHub location
+      required:
+        - host
+      properties:
+        host:
+          title: Repo Host
+          type: string
+          description: Your SCM host
+        description:
+          title: Description
+          type: string
+          description: Help others understand what this component is for
+        owner:
+          title: Owner
+          type: string
+          description: Owner of the component
+          default: development
+          enum:
+            - development
+    - title: Provide information about the new component
+      required:
+        - cluster_id
+        - namespace
+        - model_endpoint
+        - model_path
+        - owner
+      properties:
+        cluster_id:
+          title: Cluster Id
+          type: string
+          description: Id of the cluster
+          default: .apps.wearedevs.rl97.p1.openshiftapps.com
+        namespace: 
+          title: Namespace
+          type: string
+          description: Namespace
+        model_endpoint:
+          title: REST endpoint for the inference API
+          type: string
+          description: REST endpoint for the inference API
+          default: https://redhat-dog-image-generation.apps.wearedevs.rl97.p1.openshiftapps.com
+        model_path:
+          title: REST endpoint path for the inference API
+          type: string
+          description: REST endpoint path for the inference API
+          default: /v1/models/model:predict
+  steps:
+    - id: templateGitops
+      name: Generating the deployment resources and artefacts
+      action: fetch:template
+      input:
+        url: ./manifests
+        copyWithoutTemplating: []
+        values:
+          component_id: ${{parameters.namespace}}-wheres-teddy-app
+          description: ${{parameters.description}}
+          destination: https://${{ parameters.host }}/${{ parameters.owner }}/${{parameters.namespace}}-wheres-teddy-gitops.git
+          source_repository: https://${{ parameters.host }}/${{ parameters.owner }}/${{parameters.namespace}}-wheres-teddy.git
+          repository_name: ${{parameters.namespace}}-wheres-teddy
+          cluster: ${{parameters.cluster_id}}
+          namespace: ${{parameters.namespace}}
+          image_organization: ${{ parameters.image_organization }}          
+          image_registry: ${{ parameters.image_registry }}
+          image_host: ${{parameters.image_host}}
+          image_name: wheres-teddy-app
+          image_tag: ${{parameters.image_tag}}
+          model_endpoint: ${{parameters.model_endpoint}}
+          model_url: ${{parameters.model_endpoint}}/${{parameters.model_path}}
+        targetPath: ./tenant-gitops
+    - id: publishGitops
+      name: Publishing to Deployment Resource Repository
+      action: publish:gitlab
+      input:
+        sourcePath: ./tenant-gitops
+        repoUrl: "${{ parameters.host }}?owner=${{ parameters.owner }}&repo=${{parameters.namespace}}-wheres-teddy-gitops"
+        defaultBranch: main
+        repoVisibility: public
+    - id: createArgoResources
+      name: Create ArgoCD Resources
+      action: argocd:create-resources
+      input:
+        appName: ${{parameters.namespace}}-wheres-teddy-app-bootstrap
+        argoInstance: main
+        namespace: janus-argocd
+        repoUrl: https://${{ parameters.host }}/${{ parameters.owner }}/${{ parameters.namespace }}-wheres-teddy-gitops.git
+        path: 'argocd/'
