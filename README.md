@@ -155,7 +155,7 @@ This guide will help you to set up the Where is Teddy? Demo
 
     ​	**Name** My Storage
 
-    ​	**Path** ``models/notebook-output/redhat-dog/`
+    ​	**Path** `models/notebook-output/redhat-dog/`
 
 1. Click the **Deploy** button.
 
