@@ -30,7 +30,9 @@ This guide will help you to set up the Where is Teddy? Demo
    oc delete po -l name=rhods-operator -n redhat-ods-operator
    ```
 
-   > Wait a few moments and check that the authorino pods are running correctly in the new `redhat-ods-applications-auth-provider` project. **If this is not working you won't be able to expose your model serving route externally from the console and will need to edit the service manually.**
+1. Wait a few moments and check that the authorino pods are running correctly in the new `redhat-ods-applications-auth-provider` project. 
+
+   > **If this is not working you won't be able to expose your model serving route externally from the console and will need to edit the service manually.**
 
 1. Create the workspace `image-generation`.
 
@@ -51,7 +53,7 @@ This guide will help you to set up the Where is Teddy? Demo
 1. Create the serving runtime for the model serving.
 
    ```sh
-   oc apply -n image-generation -f ./setup/image-gen/serving-runtime.yaml
+   oc apply -n image-generation -f ./templates/serving-runtime.yaml
    ```
 
 1. Create the storage for the workbench `workbench-storage`.
